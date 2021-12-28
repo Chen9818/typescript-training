@@ -1,3 +1,4 @@
+
 //基本類型
 let aa: string = "aa"
 let str: string
@@ -75,3 +76,52 @@ let obj1: card = {
 
 
 //function
+function hello(a: number, b: number) {
+    return a + b
+}
+// hello("l","kk")  報錯
+
+function hello2(a: string, b: string): number {
+    // return a + b  錯誤，只能return 數字
+    return 555
+}
+
+//undefined
+function hello3(name: string, age?: number) {
+    return age    //age可填可不填  型別為number或undefined
+}
+
+//箭頭函式
+const func = () => { }
+const func2 = () => {
+    return 1
+}
+
+//as unknown
+type Data = {
+    "userId": number,
+    "id": number,
+    "title": string,
+    "completed": boolean
+}
+
+async function getData() {
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+    const data = await res.json() as Data   //因為有時你不會知道API的資料類型，所以用固定的類型來設定API
+    // console.log(data);
+}
+// getData()
+
+const data1: Data = {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+}
+
+type Beta = {
+    name: string
+}
+
+//假設data1是動態的，先unknown類型，再希望的類型Beta
+const beta = data1 as unknown as Beta
