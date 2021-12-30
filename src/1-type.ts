@@ -162,8 +162,30 @@ class carLive extends Live {
 
 const live = new Live("1號", "0001", "wei")
 console.log(live);   //只會出現live.roomName，live.id和dive.name會報錯
-                    //是一個開發防錯的機制
+//是一個開發防錯的機制
 
 
-                    
-//-----------泛型Generics ------------------
+
+//-----------泛型Generics ------------------要用function時，在決定類別
+function print<t>(data: t) {
+    console.log("data", data);
+
+}
+
+print<number>(555)
+print<string>("fff")
+print<boolean>(true)
+
+
+//class
+class Print<t>{
+    data: t
+    constructor(d: t) {
+        this.data = d
+    }
+}
+
+const p = new Print<number>(999)
+const p1 = new Print<string>("999")
+console.log("p", p);
+console.log("p1", p1);
